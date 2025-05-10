@@ -36,7 +36,7 @@ public class Carta extends JPanel{
     
     public void intImg(){ //rosso blu verde giallo
         Toolkit tk = Toolkit.getDefaultToolkit();
-        switch(colore){ //mi sento di dover specificare che ho seguito l'hint dell'IDE
+        switch(colore){ 
             case 0->{
                 img = switch (numero) {
                 case 0 -> tk.getImage("0-Rosso.png");
@@ -144,51 +144,51 @@ public class Carta extends JPanel{
         this.numero = numero;
     }
 
-    @Override
-    public String toString() {
-        return "Carta{" + "colore=" + colore + ", numero=" + numero + '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Carta{" + "colore=" + colore + ", numero=" + numero + '}';
+//    }
     
-    public String cheCarta(){
-        String RESET="\u001b[30m";
-        String coloreTesto="";
-        switch(colore){
-            case 0:
-                coloreTesto = "\u001B[31m";
-                break;
-            case 1:
-                coloreTesto= "\u001B[34m";
-                break;
-            case 2:
-                coloreTesto = "\u001B[32m";
-                break;
-            case 3:
-                coloreTesto= "\u001B[33m";
-                break;
-            default:
-                coloreTesto = "\u001B[35m";
-                break;
-            
-        }
-        switch(numero){ // dava "unrecheable statement" sui break quindi ho seguito il consiglio dell'IDE
-            case 12 -> {
-                return coloreTesto+"+2"+RESET;
-            }
-            case 13 -> {
-                return coloreTesto+"cambioGiro"+RESET;
-            }
-            case 14 -> {
-                return coloreTesto+"SKIP"+RESET;
-            }
-            case 15 -> {
-                return coloreTesto+"+4"+RESET;
-            }
-            case 16 -> {
-                return coloreTesto+"cambioColore"+RESET;
-            }
-            default -> {
-                return coloreTesto+numero+RESET;
-            }
-        }
-    }
+//    public String cheCarta(){
+//        String RESET="\u001b[30m";
+//        String coloreTesto="";
+//        switch(colore){
+//            case 0:
+//                coloreTesto = "\u001B[31m";
+//                break;
+//            case 1:
+//                coloreTesto= "\u001B[34m";
+//                break;
+//            case 2:
+//                coloreTesto = "\u001B[32m";
+//                break;
+//            case 3:
+//                coloreTesto= "\u001B[33m";
+//                break;
+//            default:
+//                coloreTesto = "\u001B[35m";
+//                break;
+//            
+//        }
+//        switch(numero){ // dava "unrecheable statement" sui break quindi ho seguito il consiglio dell'IDE
+//            case 12 -> {
+//                return coloreTesto+"+2"+RESET;
+//            }
+//            case 13 -> {
+//                return coloreTesto+"cambioGiro"+RESET;
+//            }
+//            case 14 -> {
+//                return coloreTesto+"SKIP"+RESET;
+//            }
+//            case 15 -> {
+//                return coloreTesto+"+4"+RESET;
+//            }
+//            case 16 -> {
+//                return coloreTesto+"cambioColore"+RESET;
+//            }
+//            default -> {
+//                return coloreTesto+numero+RESET;
+//            }
+//        }
+//    }
 }

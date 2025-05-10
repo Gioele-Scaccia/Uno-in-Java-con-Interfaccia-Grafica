@@ -357,7 +357,7 @@ public class Frame{
         popup.add(confirmButton);
         popup.setVisible(true);
     }
-    public void setSiONo(int x){
+    public void bloccoFraTurni(){
         JDialog popup = new JDialog(frame, "Mostrare blocco",true);
         popup.setSize(250,100);
         popup.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

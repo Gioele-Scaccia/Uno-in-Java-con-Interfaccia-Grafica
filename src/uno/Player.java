@@ -1,18 +1,15 @@
 
 package uno;
 
-import java.io.*;
 import java.util.ArrayList;
 public class Player {
-    InputStreamReader input = new InputStreamReader(System.in);
-    BufferedReader tastiera = new BufferedReader(input);
     private ArrayList<Carta> carteInMano = new ArrayList<>();
     private String nome;
     public Player(String nome){
         this.nome = nome;
     }
     public Player(){}
-    
+
     public void aggiungiCarta(Carta carta){
         if(carta!=null){
             this.carteInMano.add(carta);
@@ -119,13 +116,6 @@ public class Player {
         }
         carteInMano = carteSort;
     }
-    public void mostraCarte(){
-//        System.out.print(this.nome+"    ");
-//        for(Carta c : carteInMano){
-//            System.out.print(c.cheCarta()+"   ");
-//        }
-//        System.out.print("  Hai "+carteInMano.size()+" carte in mano!\n");
-    }
     protected void setColore(int pos,int colore){
         carteInMano.get(pos).setColore(colore);
     }
@@ -136,12 +126,11 @@ public class Player {
     }
     public void giocaFrame(Tavolo tavolo,Mazzo mazzo,Frame frame,Player[] players){
         Player player = this;
-        this.mostraCarte();
         frame.disegnaCarte(player, tavolo, mazzo, players);
         while(!frame.isReady()){
             Thread.onSpinWait();
         }
-        
+
     }
     public boolean checkCard(Carta carta,Tavolo tavolo){
         if(tavolo.getLast()==null){
@@ -160,7 +149,7 @@ public class Player {
             return true;
         }
         if(pos<-1 || pos > carteInMano.size()-1){
-            System.out.println("Questa carta non esiste! ");
+//            System.out.println("Questa carta non esiste! ");
             return false;
         }
         if(tavolo.getLast()==null){
@@ -173,16 +162,16 @@ public class Player {
             return true;
         }
         if((tavolo.getLast().getColore()!=this.carteInMano.get(pos).getColore())&& tavolo.getLast().getNumero()!=this.carteInMano.get(pos).getNumero()){
-            System.out.println("Non puoi giocare questa carta!");
+//            System.out.println("Non puoi giocare questa carta!");
             return false;
         }
         return true;
     }
-    
+
     public boolean checkWin(){
         return carteInMano.isEmpty();
     }
-    
+
     public String getNome(){
         return this.nome;
     }

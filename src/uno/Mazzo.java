@@ -2,7 +2,6 @@ package uno;
 import java.util.ArrayList;
 import java.util.Random;
 public class Mazzo {
-    //Carta[] carta = new Carta[grandezzaMazzo];
     private ArrayList<Carta> carteInMazzo = new ArrayList<>();
     public Mazzo(){
     }

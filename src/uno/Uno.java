@@ -2,18 +2,13 @@ package uno;
 
 import java.io.*;
 public class Uno {
-    public static void main(String[] args) throws IOException {
-        int quantiGiocatori=0;
-        int siONo=-1;
-        InputStreamReader input = new InputStreamReader(System.in);
-        BufferedReader tastiera = new BufferedReader(input);
+    public static void main(String[] args){
         Mazzo mazzo = new Mazzo();
         Tavolo tavolo = new Tavolo();
         Frame frame = new Frame();
-        frame.setSiONo(siONo);
+        frame.bloccoFraTurni();
         frame.chiediQuantiGiocatori();
-        quantiGiocatori=frame.getNumGiocatori();
-        Player[] players = new Player[quantiGiocatori];
+        Player[] players = new Player[frame.getNumGiocatori()];
         for(int i=0;i<players.length;i++)
         {
             players[i] = new Player("Giocatore "+ (i+1));

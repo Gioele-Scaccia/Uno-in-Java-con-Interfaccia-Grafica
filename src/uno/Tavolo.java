@@ -6,25 +6,17 @@
 package uno;
 
 import java.util.ArrayList;
-import java.io.*;
 public class Tavolo {
     private boolean chiediColore=false;
     private boolean cambiogiro=false;
     private boolean skip = false;
-    private boolean dareCarte=false;
     private int quanteCarteDare=0;
-    InputStreamReader input = new InputStreamReader(System.in);
-    BufferedReader tastiera = new BufferedReader(input);
     private ArrayList<Carta> carteGiocate = new ArrayList<>();
     private int turno=0;
     private int giro=1;
     public Tavolo(){    }
     public int getTurno(){
         return turno;
-    }
-    public void dareCarteAlProssimo(int quante){
-        dareCarte=true;
-        quanteCarteDare=quante;
     }
     public boolean getChiediColore(){
         return this.chiediColore;
@@ -44,7 +36,7 @@ public class Tavolo {
         switch (carta.getNumero()) {
             case 12 -> {
                 //+2
-                this.dareCarteAlProssimo(2);
+                quanteCarteDare=2;
                 carteGiocate.add(carta);
             }
             case 13 -> {
@@ -58,7 +50,8 @@ public class Tavolo {
                 carteGiocate.add(carta);
             }
             case 15 ->{ //+4
-                this.dareCarteAlProssimo(4);
+                quanteCarteDare=4;
+                //non faccio carteGiocate.add(carta); perche' lo faccio all'inizio del metodo
             }
             default -> carteGiocate.add(carta);
         }
@@ -84,7 +77,7 @@ public class Tavolo {
         return carteGiocate.size();
     }
     public void gioca(Mazzo mazzo,Player[] player,Frame frame){
-        if(this.dareCarte){
+        if(this.quanteCarteDare>0){
             for(int i=0;i<this.quanteCarteDare;i++){
                 if(mazzo.getNum()==0 && this.carteGiocate.isEmpty()){
                     System.out.println("Impossibile dare altre carte al "+player[turno].getNome());
@@ -96,7 +89,6 @@ public class Tavolo {
                 
             }
             System.out.println(player[turno].getNome() + " sara' skippato!");
-            dareCarte=false;
             this.quanteCarteDare=0;
         }
         
